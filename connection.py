@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import time
 
-st.title("Read Google Sheet as DataFrame")
+st.title("יורו 2024")
 
 
 conn = st.connection("gsheets", type=GSheetsConnection)
