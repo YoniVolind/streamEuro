@@ -16,7 +16,7 @@ select "id","rank","score"
 from
 Players
 where
-cast("rank" as integer) < 3
+cast("rank" as integer) < 5
 
 '''
 df=conn.query(sql=sql)
