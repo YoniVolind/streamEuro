@@ -17,7 +17,7 @@ Games
 where
 "Game Number" is not null
 '''
-df1=conn.query(sql=sql)
+df1=conn.query(sql=sql, ttl=ttl_seconds)
 st.dataframe(df1, height=700,width=500)
 
 sql1='''
