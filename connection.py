@@ -6,7 +6,8 @@ st.title("יורו 2024")
 
 
 conn = st.connection("gsheets", type=GSheetsConnection)
-data = conn.read(worksheet='Games',usecols=list(range(6)))
+ttl_seconds = 10
+data = conn.read(worksheet='Games', ttl=ttl_seconds, usecols=list(range(6)))
 st.dataframe(data)
 
 sql='''
@@ -31,5 +32,9 @@ order by "rank"
 '''
 df=conn.query(sql=sql1)
 st.dataframe(df)
+def clear_my_cache():
+    st.cache_data.clear()
+
+st.button('Clear memory', on_click=clear_my_cache)
 
 
