@@ -1,6 +1,5 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
-import streamlit_lottie
 import time
 
 st.title("יורו 2024")
