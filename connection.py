@@ -1,6 +1,17 @@
+import pathlib
+
+import pathlib as pathlib
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
+from pathlib import Path
 import time
+
+
+css_file= "./styles/main.css"
+with open(css_file,'r') as f:
+    st.markdown("<style>{}</style>".format(f.read()),unsafe_allow_html=True)
+
+
 
 st.title("יורו 2024 - פלוגה ב', 8132"+":punch:")
 
