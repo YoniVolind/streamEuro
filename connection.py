@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import time
 
-st.title("יורו 2024 - פלוגה ב', 8132")
+st.title("יורו 2024 - פלוגה ב', 8132"+":punch:")
 
 def clear_my_cache():
     st.cache_data.clear()
@@ -35,7 +35,7 @@ and cast("points" as integer) >0
 order by "rank"
 
 '''
-df=conn.query(sql=sql1)
+df=conn.query(sql=sql1, ttl=ttl_seconds)
 st.dataframe(df,hide_index=True)
 
 
