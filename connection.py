@@ -6,6 +6,12 @@ from streamlit_gsheets import GSheetsConnection
 from pathlib import Path
 import time
 
+def clear_my_cache():
+    st.cache_data.clear()
+
+st.title("יורו 2024 - פלוגה ב', 8132"+":punch:")
+st.button('Refresh!', on_click=clear_my_cache,use_container_width=True)
+col1,col2=st.columns(2)
 
 css_file= "./styles/main.css"
 with open(css_file,'r') as f:
@@ -13,12 +19,11 @@ with open(css_file,'r') as f:
 
 
 
-st.title("יורו 2024 - פלוגה ב', 8132"+":punch:")
 
-def clear_my_cache():
-    st.cache_data.clear()
 
-st.button('Refresh!', on_click=clear_my_cache,use_container_width=True)
+
+
+# st.button('Refresh!', on_click=clear_my_cache,use_container_width=True)
 
 
 conn = st.connection("gsheets", type=GSheetsConnection)
@@ -34,7 +39,9 @@ where
 "Game Number" is not null
 '''
 df1=conn.query(sql=sql, ttl=ttl_seconds)
-st.dataframe(df1, height=700,width=500,hide_index=True)
+with col1:
+    st.markdown("לוח המשחקים והתוצאות")
+    st.dataframe(df1, height=700,width=500,hide_index=True)
 
 sql1='''
 select "rank","name","points"
@@ -47,7 +54,9 @@ order by "rank"
 
 '''
 df=conn.query(sql=sql1, ttl=ttl_seconds)
-st.dataframe(df,hide_index=True)
+with col2:
+    st.markdown("טבלת המובילים")
+    st.dataframe(df,hide_index=True)
 
 
 
